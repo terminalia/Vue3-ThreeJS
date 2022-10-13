@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 
-export class ThreeCanvas {
+export class ThreeBasics {
     constructor(element) {
         this.renderer = null,
         this.scene = null,

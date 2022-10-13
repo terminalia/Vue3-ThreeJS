@@ -1,14 +1,16 @@
 <script setup>
 
 import { onMounted } from 'vue';
-import { ThreeBasics } from '../modules/three-basics.js'
+import { ThreeTest1 } from '../modules/three-test1.js'
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threBasics = new ThreeBasics(element)
-    threBasics.init()
-    threBasics.animate()
-    window.addEventListener('resize', ()=> { threBasics.onWindowResize() })
+    let threeTest = new ThreeTest1(element)
+    threeTest.init()
+    threeTest.animate()
+    window.addEventListener('resize', ()=> {
+        threeTest.onWindowResize()
+    })
 })
 </script>
 
@@ -16,6 +18,7 @@ onMounted(()=> {
     <div id="three-container">
     </div>
 </template>
+
 <style scoped>
     #three-container {
         width: 100%;

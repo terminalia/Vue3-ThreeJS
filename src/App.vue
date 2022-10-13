@@ -2,12 +2,13 @@
 import Header from './components/Header.vue';
 import BasicThreeClass from './components/BasicThreeClass.vue';
 import BasicThreeComponent from './components/BasicThreeComponent.vue';
+import ThreeTests from './components/ThreeTests.vue';
 </script>
 
 <template>
   <Header></Header>
   <section>
-    <BasicThreeComponent></BasicThreeComponent>
+    <ThreeTests></ThreeTests>
   </section>
 </template>
 
