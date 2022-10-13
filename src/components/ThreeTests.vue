@@ -2,10 +2,11 @@
 
 import { onMounted } from 'vue';
 import { ThreeTest1 } from '../modules/three-test1.js'
+import { ThreeTest2 } from '../modules/three-test2-modelloading';
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new ThreeTest1(element)
+    let threeTest = new ThreeTest2(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {
