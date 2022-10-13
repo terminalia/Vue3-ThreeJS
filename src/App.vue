@@ -1,13 +1,14 @@
 <script setup>
-import ThreeCanvas from './components/three-canvas.vue';
 import Header from './components/Header.vue';
+import BasicThreeClass from './components/BasicThreeClass.vue';
+import BasicThreeComponent from './components/BasicThreeComponent.vue';
 </script>
 
 <template>
   <Header></Header>
   <section>
-  <ThreeCanvas></ThreeCanvas>
-</section>
+    <BasicThreeComponent></BasicThreeComponent>
+  </section>
 </template>
 
 <style>
