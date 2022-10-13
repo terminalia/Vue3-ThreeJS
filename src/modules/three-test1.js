@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { TrackballControls } from '../../node_modules/three/examples/jsm/controls/TrackballControls.js'
+import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/OrbitControls.js'
 
 export class ThreeTest1 {
     constructor(element) {
@@ -21,10 +21,11 @@ export class ThreeTest1 {
         this.camera = new THREE.PerspectiveCamera(70, this.container.clientWidth / this.container.clientHeight, 0.01, 1000.0)
         this.camera.position.z = 1
 
-        this.camera_ctrl = new TrackballControls(this.camera, this.renderer.domElement)
-        this.camera_ctrl.rotateSpeed = 2.0
-        this.camera_ctrl.zoomSpeed = 1.2
-        this.camera_ctrl.panSpeed = 0.8
+        this.camera_ctrl = new OrbitControls(this.camera, this.renderer.domElement)
+        this.camera_ctrl.rotateSpeed = 1
+        // this.camera_ctrl.zoomSpeed = 1.2
+        // this.camera_ctrl.panSpeed = 0.8
+        this.camera_ctrl.update()
 
         this.scene = new THREE.Scene()
 
