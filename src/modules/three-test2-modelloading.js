@@ -76,8 +76,4 @@ export class ThreeTest2 {
             console.log(error)
         })
     }
-
-    loadGLTF() {
-        
-    }
 } 
