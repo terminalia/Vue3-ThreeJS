@@ -1,9 +1,9 @@
 import * as THREE from 'three'
 import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/OrbitControls.js'
 import { OBJLoader } from '../../node_modules/three/examples/jsm/loaders/OBJLoader.js'
-import { loadOBJ } from './utils.js'
+import { loadOBJ, loadShader } from './utils.js'
 
-export class ThreeTest2 {
+export class ThreeTest3 {
     constructor(element) {
         this.renderer = null,
         this.scene = null,
@@ -40,9 +40,11 @@ export class ThreeTest2 {
         this.camera.add( pointLight );
         this.scene.add( this.camera );
 
-        const mat = new THREE.MeshLambertMaterial()
-        mat.color.setHex(0x9ed3e6)
-        this.mesh  = await loadOBJ(this.objLoader, mat, 'src/assets/models/Monkey.obj')
+        let uniforms = {
+            vertexColor: { value: new THREE.Vector3(0, 1, 0)}
+        }
+        const custom_mat = await loadShader('src/assets/shaders/basic.vert','src/assets/shaders/basic.frag', uniforms)
+        this.mesh  = await loadOBJ(this.objLoader, custom_mat, 'src/assets/models/Monkey.obj')
         this.scene.add(this.mesh)
     }
 
