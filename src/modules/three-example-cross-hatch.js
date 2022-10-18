@@ -5,7 +5,7 @@ import { loadOBJ, loadShader } from './utils.js'
 import * as dat from 'dat.gui'
 import { Settings } from '../modules/settings.js'
 
-export class CrossHatch {
+export class TestCrossHatch {
     constructor(element) {
         this.renderer = null,
         this.scene = null,

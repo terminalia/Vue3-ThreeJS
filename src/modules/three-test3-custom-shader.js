@@ -42,8 +42,12 @@ export class ThreeTest3 {
 
         let uniforms = {
             uColor: { value: new THREE.Vector3(1, 0, 0)},
-            uTexture: { value: this.textureLoader.load('src/assets/textures/crate.png')}
+            uTexture: { value: this.textureLoader.load('src/assets/textures/crate.png')},
+            uRepeatU: { value: 3.0 },
+            uRepeatV: { value: 3.0 }
         }
+
+        uniforms.uTexture.value.wrapT = uniforms.uTexture.value.wrapS = THREE.RepeatWrapping
         const custom_mat = await loadShader('src/assets/shaders/basic.vert','src/assets/shaders/basic.frag', uniforms)
         this.mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), custom_mat)
         this.scene.add(this.mesh)
