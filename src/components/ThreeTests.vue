@@ -4,13 +4,14 @@ import { onMounted } from 'vue';
 import { ThreeTest1 } from '../modules/three-test1.js'
 import { ThreeTest2 } from '../modules/three-test2-modelloading';
 import { ThreeTest3 } from '../modules/three-test3-custom-shader';
-import { CrossHatch } from '../modules/three-example-cross-hatch';
+import { TestCrossHatch } from '../modules/three-example-cross-hatch';
 import { ThreeDissolve } from '../modules/three-example-dissolve'
 import { ThreeTest4 } from '../modules/three-test4-transparent-shader'
+import { TestOrthoMask } from '../modules/three-example-ortho-mask'
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new ThreeTest4(element)
+    let threeTest = new TestOrthoMask(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {
@@ -28,7 +29,7 @@ onMounted(()=> {
     #three-container {
         width: 100%;
         height: 700px;
-        background-image: url('src/assets/textures/paper6.jpg');
+        background-image: url('src/assets/textures/brown.jpg');
         background-position: 0 bottom;
     }
 </style>
