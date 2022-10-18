@@ -12,5 +12,8 @@ export class Settings {
         this.model = 3;
         this.paper = 1;
         this.preset = 0;
+        this.repeat_x = 1;
+        this.repeat_y = 1;
+        this.repeat = 1;
     }
 }

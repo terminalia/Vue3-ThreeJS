@@ -4,10 +4,11 @@ import { onMounted } from 'vue';
 import { ThreeTest1 } from '../modules/three-test1.js'
 import { ThreeTest2 } from '../modules/three-test2-modelloading';
 import { ThreeTest3 } from '../modules/three-test3-custom-shader';
+import { CrossHatch } from '../modules/three-example-cross-hatch';
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new ThreeTest3(element)
+    let threeTest = new CrossHatch(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {
