@@ -6,10 +6,11 @@ import { ThreeTest2 } from '../modules/three-test2-modelloading';
 import { ThreeTest3 } from '../modules/three-test3-custom-shader';
 import { CrossHatch } from '../modules/three-example-cross-hatch';
 import { ThreeDissolve } from '../modules/three-example-dissolve'
+import { ThreeTest4 } from '../modules/three-test4-transparent-shader'
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new ThreeDissolve(element)
+    let threeTest = new ThreeTest4(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {
