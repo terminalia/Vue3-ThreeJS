@@ -41,10 +41,11 @@ export class ThreeTest3 {
         this.scene.add( this.camera );
 
         let uniforms = {
-            vertexColor: { value: new THREE.Vector3(0, 1, 0)}
+            uColor: { value: new THREE.Vector3(1, 0, 0)},
+            uTexture: { value: this.textureLoader.load('src/assets/textures/crate.png')}
         }
         const custom_mat = await loadShader('src/assets/shaders/basic.vert','src/assets/shaders/basic.frag', uniforms)
-        this.mesh  = await loadOBJ(this.objLoader, custom_mat, 'src/assets/models/Monkey.obj')
+        this.mesh = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), custom_mat)
         this.scene.add(this.mesh)
     }
 
