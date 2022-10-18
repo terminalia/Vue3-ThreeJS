@@ -9,7 +9,7 @@ import { ThreeDissolve } from '../modules/three-example-dissolve'
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new ThreeTest3(element)
+    let threeTest = new ThreeDissolve(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {
