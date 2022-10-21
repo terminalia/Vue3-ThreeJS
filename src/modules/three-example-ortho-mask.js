@@ -65,7 +65,6 @@ export class TestOrthoMask {
         this.perspScene.add(this.mesh)
 
         mask_uniforms.uDiffuseTex.value.wrapT = mask_uniforms.uDiffuseTex.value.wrapS = THREE.RepeatWrapping
-        mask_uniforms.uAlphaTex.value.wrapT = mask_uniforms.uAlphaTex.value.wrapS = THREE.RepeatWrapping
         const mask_mat = await loadShader('src/assets/shaders/ortho_mask.vert', 'src/assets/shaders/ortho_mask.frag', mask_uniforms)
         mask_mat.transparent = true
         const mask_plane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 100, 100), mask_mat)
