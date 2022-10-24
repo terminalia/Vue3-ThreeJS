@@ -8,10 +8,11 @@ import { TestCrossHatch } from '../modules/three-example-cross-hatch';
 import { ThreeDissolve } from '../modules/three-example-dissolve'
 import { ThreeTest4 } from '../modules/three-test4-transparent-shader'
 import { TestOrthoMask } from '../modules/three-example-ortho-mask'
+import { ThreeTest5 } from '../modules/three-test5-outline-shader'
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new TestOrthoMask(element)
+    let threeTest = new ThreeTest5(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {

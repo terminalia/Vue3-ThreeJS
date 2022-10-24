@@ -37,7 +37,7 @@ export function loadShader(vert_path, frag_path, uniforms) {
     })
 }
 
-function loadShaderSync(url) {
+export function loadShaderSync(url) {
     var req = new XMLHttpRequest();
     req.open("GET", url, false);
     req.send(null);
