@@ -10,10 +10,11 @@ import { ThreeTest4 } from '../modules/three-test4-transparent-shader'
 import { TestOrthoMask } from '../modules/three-example-ortho-mask'
 import { ThreeTest5 } from '../modules/three-test5-outline-shader'
 import { ThreeTest6 } from '../modules/three-test6-perlin-noise'
+import { ThreeTest7 } from '../modules/three-test7-gradient-fluid'
 
 onMounted(()=> {
     let element = document.getElementById("three-container")
-    let threeTest = new ThreeTest6(element)
+    let threeTest = new ThreeTest7(element)
     threeTest.init()
     threeTest.animate()
     window.addEventListener('resize', ()=> {
@@ -30,10 +31,10 @@ onMounted(()=> {
 
 <style scoped>
     #three-container {
-        width: 100%;
-        height: 700px;
+        width: 20%;
+        height: 900px;
         background-image: url('src/assets/textures/brown.jpg');
-        filter: blur(18px);
+        filter: blur(10px);
         background-position: 0 bottom;
     }
 </style>

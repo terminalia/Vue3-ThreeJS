@@ -25,12 +25,13 @@ export function loadOBJ(objLoader, material, path) {
     })
 }
 
-export function loadShader(vert_path, frag_path, uniforms) {
+export function loadShader(vert_path, frag_path, uniforms, isWireframe) {
     return new Promise(resolve => {
         let result = new THREE.ShaderMaterial({
             uniforms: uniforms,
             vertexShader: loadShaderSync(vert_path),
-            fragmentShader: loadShaderSync(frag_path)
+            fragmentShader: loadShaderSync(frag_path),
+            wireframe: isWireframe
         })
 
         return resolve(result)
