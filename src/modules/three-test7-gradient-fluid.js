@@ -19,6 +19,7 @@ export class ThreeTest7 {
     async init() {
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
         this.renderer.setSize(this.container.clientWidth, this.container.clientHeight)
+        this.renderer.setClearColor(0x3E3E51)
         this.container.appendChild(this.renderer.domElement)
         this.textureLoader = new THREE.TextureLoader()
     
@@ -52,7 +53,8 @@ export class ThreeTest7 {
 
         let uniforms = {
             uTime: { value: 0 },
-            uColor: { value: this.colors }
+            uColor: { value: this.colors },
+            uHeight: { value: 0.2 }
         }
 
         this.shaderMat = await loadShader('src/assets/shaders/gradient.vert','src/assets/shaders/gradient.frag', uniforms, false)

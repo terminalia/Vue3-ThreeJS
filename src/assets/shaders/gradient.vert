@@ -1,11 +1,9 @@
 uniform float uTime;
-uniform vec2 uPixels;
+uniform float uHeight;
 uniform vec3 uColor[5];
-varying vec2 vUv;
-varying vec3 vPosition;
-varying vec3 vColor;
 
-float PI = 3.141592653589793238;
+varying vec2 vUv;
+varying vec3 vColor;
 
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
 vec4 taylorInvSqrt(vec4 r){return 1.79284291400159 - 0.85373472095314 * r;}
@@ -82,16 +80,16 @@ void main()
 
     //vec3 pos = vec3(position.x, position.y, position.z + 0.1 * sin(uv.x * 20.) * sin(uv.y * 20.));
     // vec3 pos = vec3(position.x, position.y, position.z + noise * 0.2);
-    vec3 pos = vec3(position.x, position.y, position.z + noise * 0.2 + tilt + incline + offset);
+    vec3 pos = vec3(position.x, position.y, position.z + noise * uHeight + tilt + incline + offset);
     
     vColor = uColor[0];
 
-    for (int i=1; i< 2; i++) {
-        float noise = snoise(vec3(noiseCoord.x + uTime * 3., noiseCoord.y, uTime * 10.));
+    // for (int i=1; i< 2; i++) {
+    //     float noise = snoise(vec3(noiseCoord.x + uTime * 3., noiseCoord.y, uTime * 10.));
 
-        vColor = mix(vColor, uColor[i], noise);
-    }
-    
+    //     vColor = mix(vColor, uColor[i], noise);
+    // }
+    vColor = mix(uColor[0], uColor[1], clamp(noise, 0.0, 1.0));
     
     vUv = uv;
 

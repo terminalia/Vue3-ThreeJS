@@ -31,10 +31,10 @@ onMounted(()=> {
 
 <style scoped>
     #three-container {
-        width: 20%;
+        width: 100%;
         height: 900px;
         background-image: url('src/assets/textures/brown.jpg');
-        filter: blur(10px);
+        /* filter: blur(10px); */
         background-position: 0 bottom;
     }
 </style>
