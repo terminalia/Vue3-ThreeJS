@@ -13,7 +13,8 @@ export class ThreeTest7 {
         this.textureLoader = null,
         this.time = 0,
         this.shaderMat = null,
-        this.colors = null
+        this.colors = null,
+        this.speed_inc = 0.0003
     }
 
     async init() {
@@ -54,28 +55,26 @@ export class ThreeTest7 {
         let uniforms = {
             uTime: { value: 0 },
             uColor: { value: this.colors },
-            uHeight: { value: 0.2 }
+            uHeight: { value: 0.5 }
         }
 
         this.shaderMat = await loadShader('src/assets/shaders/gradient.vert','src/assets/shaders/gradient.frag', uniforms, false)
         this.mesh = new THREE.Mesh(new THREE.PlaneGeometry(5, 5, 200, 200), this.shaderMat)
         this.scene.add(this.mesh)
+        return this.renderer.domElement
     }
 
     render() {
-        this.time += 0.0005
+        this.time += this.speed_inc
         if (this.shaderMat) {
             this.shaderMat.uniforms['uTime'].value = this.time
         }
     }
-    animate() {
+    
+    update() {
         this.render()
-        requestAnimationFrame(()=> this.animate())
         this.renderer.render(this.scene, this.camera)
-        this.camera_ctrl.update()
-
-        
-        
+        this.camera_ctrl.update()  
     }
 
     onWindowResize() {

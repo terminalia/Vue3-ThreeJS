@@ -6,7 +6,7 @@ import ThreeTests from './components/ThreeTests.vue';
 </script>
 
 <template>
-  <Header></Header>
+  <!-- <Header></Header> -->
   <section>
     <ThreeTests></ThreeTests>
   </section>
@@ -14,8 +14,10 @@ import ThreeTests from './components/ThreeTests.vue';
 
 <style>
   * {
+    overflow: hidden;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    background-color: #3E3E51;
   }
 </style>

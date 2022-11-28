@@ -1,40 +1,62 @@
 <script setup>
 
 import { onMounted } from 'vue';
-import { ThreeTest1 } from '../modules/three-test1.js'
-import { ThreeTest2 } from '../modules/three-test2-modelloading';
-import { ThreeTest3 } from '../modules/three-test3-custom-shader';
-import { TestCrossHatch } from '../modules/three-example-cross-hatch';
-import { ThreeDissolve } from '../modules/three-example-dissolve'
-import { ThreeTest4 } from '../modules/three-test4-transparent-shader'
-import { TestOrthoMask } from '../modules/three-example-ortho-mask'
-import { ThreeTest5 } from '../modules/three-test5-outline-shader'
-import { ThreeTest6 } from '../modules/three-test6-perlin-noise'
 import { ThreeTest7 } from '../modules/three-test7-gradient-fluid'
 
-onMounted(()=> {
+onMounted(async () => {
     let element = document.getElementById("three-container")
     let threeTest = new ThreeTest7(element)
-    threeTest.init()
-    threeTest.animate()
-    window.addEventListener('resize', ()=> {
+    const canvasLeft = await threeTest.init()
+    console.log(canvasLeft)
+    const canvasRight = canvasLeft.cloneNode()
+    document.querySelector('#three-right').appendChild(canvasRight)
+    const ctx = canvasRight.getContext('2d')
+    function animate() {
+        threeTest.update()
+        ctx.save()
+        ctx.scale(2, 2)
+        ctx.drawImage(canvasLeft, 0, 0);
+        ctx.restore()
+        requestAnimationFrame(animate)
+    }
+    animate()
+    window.addEventListener('resize', () => {
         threeTest.onWindowResize()
     })
 })
 </script>
 
 <template>
-    
+
     <div id="three-container">
     </div>
+    <div></div>
+    <div id="three-right"></div>
 </template>
 
 <style scoped>
-    #three-container {
-        width: 100%;
-        height: 900px;
-        background-image: url('src/assets/textures/brown.jpg');
-        /* filter: blur(10px); */
-        background-position: 0 bottom;
-    }
+#three-container {
+
+    width: 50%;
+    height: 100vh;
+    background-color: #3E3E51;
+    /* filter: blur(36px); */
+    /* background-image: url('src/assets/textures/brown.jpg'); */
+
+    /* background-position: 0 bottom; */
+}
+
+#three-right {
+position: absolute;
+right: 0;
+top: 0;
+transform: scale(-1, -1);
+width: 50%;
+height: 100vh;
+background-color: #3E3E51;
+/* filter: blur(36px); */
+/* background-image: url('src/assets/textures/brown.jpg'); */
+
+/* background-position: 0 bottom; */
+}
 </style>
