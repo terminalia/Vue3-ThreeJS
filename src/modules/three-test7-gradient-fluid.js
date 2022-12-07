@@ -3,7 +3,7 @@ import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/Or
 import { loadOBJ, loadShader } from './utils.js'
 
 export class ThreeTest7 {
-    constructor(element) {
+    constructor(element, background_color, gradient_color) {
         this.renderer = null,
         this.scene = null,
         this.camera = null,
@@ -14,8 +14,12 @@ export class ThreeTest7 {
         this.time = 0,
         this.shaderMat = null,
         this.colors = null,
-        this.speed_inc = 0.0003
+        this.speed_inc = 0.0003,
+        this.background_color = background_color,
+        this.gradient_color = gradient_color
     }
+
+    
 
     async init() {
         this.renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -41,20 +45,11 @@ export class ThreeTest7 {
         const pointLight = new THREE.PointLight( 0xffffff, 0.8 );
         this.camera.add( pointLight );
         this.scene.add( this.camera );
-        
-        this.colors = [
-            new THREE.Color(0x3E3E51),
-            new THREE.Color(0x41D629),
-            new THREE.Color(0xFB9600),
-            new THREE.Color(0xFF3C5F),
-            new THREE.Color(0xFE83F2)
-        ];
-
-        console.log(this.colors)
 
         let uniforms = {
             uTime: { value: 0 },
-            uColor: { value: this.colors },
+            uBackgroundColor: { value: new THREE.Color(this.background_color) },
+            uGradientColor: { value: new THREE.Color(this.gradient_color)},
             uHeight: { value: 0.5 }
         }
 
@@ -64,15 +59,17 @@ export class ThreeTest7 {
         return this.renderer.domElement
     }
 
-    render() {
+    render(bg, fg) {
         this.time += this.speed_inc
         if (this.shaderMat) {
             this.shaderMat.uniforms['uTime'].value = this.time
+            this.shaderMat.uniforms['uBackgroundColor'].value = new THREE.Color(bg)
+            this.shaderMat.uniforms['uGradientColor'].value = new THREE.Color(fg)
         }
     }
     
-    update() {
-        this.render()
+    update(bg, fg) {
+        this.render(bg, fg)
         this.renderer.render(this.scene, this.camera)
         this.camera_ctrl.update()  
     }
@@ -83,4 +80,6 @@ export class ThreeTest7 {
         this.camera.updateProjectionMatrix()
         this.camera_ctrl.handleResize()
     }
+
+    
 } 
